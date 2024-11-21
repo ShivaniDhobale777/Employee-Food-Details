@@ -1,0 +1,62 @@
+
+  
+
+    <div class="container mt-4">
+       
+        <h2 style="font-weight: 700;">Monthly Food Order Details for: {{ employeeName }}</h2>
+      
+    
+        <div class="mb-3">
+          <label for="month" class="form-label">Select Month:</label>
+          <select id="month" [(ngModel)]="selectedMonth" class="form-control">
+            <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+          </select>
+        </div>
+      
+   
+        <button mat-raised-button color="primary" class="fetchbtn" (click)="fetchFoodOrders()">Fetch Data</button>
+      
+     
+        <table mat-table [dataSource]="foodOrders" class="mat-elevation-z8">
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let order">{{ order.date }}</td>
+          </ng-container>
+      
+          <ng-container matColumnDef="breakfast">
+            <th mat-header-cell *matHeaderCellDef>Breakfast</th>
+            <td mat-cell *matCellDef="let order" [ngClass]="getStatusClass(order.breakfast)">
+              {{ order.breakfast }}
+            </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="lunch">
+            <th mat-header-cell *matHeaderCellDef>Lunch</th>
+            <td mat-cell *matCellDef="let order" [ngClass]="getStatusClass(order.lunch)">
+              {{ order.lunch }}
+            </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="dinner">
+            <th mat-header-cell *matHeaderCellDef>Dinner</th>
+            <td mat-cell *matCellDef="let order" [ngClass]="getStatusClass(order.dinner)">
+              {{ order.dinner }}
+            </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="fine">
+            <th mat-header-cell *matHeaderCellDef>Fine (Rs)</th>
+            <td mat-cell *matCellDef="let order">{{ order.fine }}</td>
+          </ng-container>
+      
+
+          <tr mat-header-row *matHeaderRowDef="['date', 'breakfast', 'lunch', 'dinner', 'fine']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['date', 'breakfast', 'lunch', 'dinner', 'fine'];"></tr>
+        </table>
+      
+
+        <div class="mt-4">
+          <h3>Total Monthly Fine: Rs {{ totalFine }}</h3>
+        </div>
+      </div>
+      

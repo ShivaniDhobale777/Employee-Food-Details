@@ -1,0 +1,26 @@
+
+.fetchbtn{
+    border-radius: 5px;
+    background-color: #28282d;
+    color: white;
+    border: 1px solid black;
+    font-weight: 600;
+    padding: 7px;
+
+}
+
+.delivered-status {
+    color: #62af62;
+    font-weight: bold;
+  }
+  
+  .pending-status {
+    color: #4e59a2;
+    font-weight: bold;
+  }
+  
+  .canceled-status {
+    color: #ef4949;
+    font-weight: bold;
+  }
+  
